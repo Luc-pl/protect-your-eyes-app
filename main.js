@@ -8,11 +8,15 @@ function main() {
   // create new window
   let mainWindow = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
     width: 800,
     height: 600,
   })
+
+  mainWindow.webContents.openDevTools();
 
   // load app/index.html as the window content
   mainWindow.loadFile(path.join('app', 'index.html'));
